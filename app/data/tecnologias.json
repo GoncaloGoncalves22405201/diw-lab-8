@@ -1,0 +1,86 @@
+[
+  {
+    "title": "HTML",
+    "emoji": "🌐",
+    "description": "Linguagem de marcação para estruturar conteúdo web",
+    "rating": 5
+  },
+  {
+    "title": "CSS",
+    "emoji": "🎨",
+    "description": "Linguagem de estilo para design visual",
+    "rating": 5
+  },
+  {
+    "title": "Tailwind CSS",
+    "emoji": "💨",
+    "description": "Framework CSS utilitário para estilização rápida",
+    "rating": 5
+  },
+  {
+    "title": "JavaScript",
+    "emoji": "⚡",
+    "description": "Linguagem de programação para interatividade web",
+    "rating": 5
+  },
+  {
+    "title": "TypeScript",
+    "emoji": "📘",
+    "description": "Superset do JavaScript com tipagem estática",
+    "rating": 5
+  },
+  {
+    "title": "JSON",
+    "emoji": "📄",
+    "description": "Formato de dados leve para troca de informações",
+    "rating": 4
+  },
+  {
+    "title": "API RESTful",
+    "emoji": "🔗",
+    "description": "Arquitetura para comunicação entre sistemas",
+    "rating": 5
+  },
+  {
+    "title": "Swagger",
+    "emoji": "📋",
+    "description": "Ferramenta para documentação de APIs",
+    "rating": 4
+  },
+  {
+    "title": "GitHub",
+    "emoji": "🐙",
+    "description": "Plataforma de hospedagem de código",
+    "rating": 5
+  },
+  {
+    "title": "Codespaces",
+    "emoji": "☁️",
+    "description": "Ambiente de desenvolvimento na nuvem",
+    "rating": 4
+  },
+  {
+    "title": "GitHub Pages",
+    "emoji": "📄",
+    "description": "Hospedagem gratuita para sites estáticos",
+    "rating": 4
+  },
+  {
+    "title": "React.js",
+    "emoji": "⚛️",
+    "description": "Biblioteca JavaScript para construir interfaces",
+    "rating": 5
+  },
+  {
+    "title": "Next.js",
+    "emoji": "▲",
+    "description": "Framework React para aplicações web modernas",
+    "rating": 5
+  },
+  {
+    "title": "Vercel",
+    "emoji": "🚀",
+    "description": "Plataforma de deploy para aplicações web",
+    "rating": 5
+  }
+]
