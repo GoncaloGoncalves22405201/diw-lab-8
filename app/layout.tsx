@@ -24,14 +24,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const data = new Date();
-  
+
   return (
     <html lang="en">
-      <body 
+      <body
         className="flex flex-col justify-start gap-4 p-20 items-center min-h-screen"
         suppressHydrationWarning
       >
-        
         <header className="flex flex-col items-center">
           <h1>React & Next.js</h1>
           <nav className="flex gap-4">
@@ -39,15 +38,15 @@ export default function RootLayout({
             <Link href="/sobre">Sobre</Link>
             <Link href="/caracteristicas">Características</Link>
             <Link href="/tecnologias">Tecnologias</Link>
+            <Link href="/projetos">Projetos</Link> {/* link pedido no enunciado */}
           </nav>
         </header>
-        
+
         <main className="bg-blue-200 p-5 rounded-2xl max-w-2xl min-h-[70vh]">
           {children}
         </main>
-        
-        <footer>DIW {data.getFullYear()}</footer>
 
+        <footer>DIW {data.getFullYear()}</footer>
       </body>
     </html>
   );
