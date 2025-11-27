@@ -3,9 +3,7 @@ import tecnologias from "@/app/data/tecnologias.json";
 import Link from "next/link";
 
 interface TecnologiaPageProps {
-  params: Promise<{
-    tecnologia: string;
-  }>;
+  params: Promise<{ tecnologia: string }>;
 }
 
 export default async function TecnologiaPage({ params }: TecnologiaPageProps) {

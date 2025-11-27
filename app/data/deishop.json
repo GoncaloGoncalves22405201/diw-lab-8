@@ -1,0 +1,30 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Camisa DIW",
+      "categoria": "Roupas",
+      "preco": 20,
+      "emoji": "👕"
+    },
+    {
+      "id": 2,
+      "nome": "Copo DEISI",
+      "categoria": "Acessórios",
+      "preco": 10,
+      "emoji": "🥤"
+    },
+    {
+      "id": 3,
+      "nome": "Hoodie DIW",
+      "categoria": "Roupas",
+      "preco": 35,
+      "emoji": "🧥"
+    }
+  ],
+
+  "categorias": [
+    { "nome": "Roupas", "emoji": "👗" },
+    { "nome": "Acessórios", "emoji": "🛍️" }
+  ]
+}
