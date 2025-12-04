@@ -1,5 +1,6 @@
 "use client";
-import { Product } from "@/models/interfaces";
+import { Product } from "@/app/models/interfaces";
+
 
 interface Props {
   product: Product;
