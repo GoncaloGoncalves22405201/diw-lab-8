@@ -3,8 +3,7 @@ import useSWR from "swr";
 import { useState, useEffect } from "react";
 import { Product } from "@/app/models/interfaces";
 import { Spinner } from "@/components/ui/spinner";
-import ProdutoDetalhesCard from "@/components/ProdutoDetalhesCard";
-import ProductModal from "@/components/ProductModal";
+import ProductCard from "@/components/ProductCard";
 import CartSection from "@/components/CartSection";
 import { toast } from "sonner";
 
@@ -22,8 +21,6 @@ export default function ProdutosPage() {
     fetcher
   );
 
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -50,7 +47,7 @@ export default function ProdutosPage() {
       return [...prev, { product: p, qty: 1 }];
     });
 
-    toast("Adicionado ao carrinho: " + p.title);
+    toast.success("✅ Adicionado ao carrinho: " + p.title);
   };
 
   const removeFromCart = (id: number) => {
@@ -70,26 +67,44 @@ export default function ProdutosPage() {
     });
   };
 
-  const buy = async () => {
-    const res = await fetch("/api/deisishop/buy", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        products: cart.flatMap((item) =>
-          Array(item.qty).fill(item.product.id)
-        ),
-        coupon: "",
-        student: false,
-      }),
-    });
+  const buy = async (student: boolean, coupon: string) => {
+    try {
+      const res = await fetch("/api/deisishop/buy", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          products: cart.flatMap((item) =>
+            Array(item.qty).fill(item.product.id)
+          ),
+          student: student,
+          coupon: coupon,
+        }),
+      });
 
-    if (!res.ok) {
-      toast.error("Erro ao processar compra");
-      return;
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({ error: "Erro desconhecido" }));
+        toast.error(`❌ ${errorData.error || "Erro ao processar compra"}`);
+        return;
+      }
+
+      const data = await res.json();
+      
+      toast.success(
+        `🎉 Compra efetuada com sucesso!`,
+        {
+          description: `Total: ${data.totalCost || total.toFixed(2)}€${data.reference ? ` | Ref: ${data.reference}` : ''}`,
+          duration: 5000,
+        }
+      );
+      
+      setCart([]);
+      
+      return data;
+      
+    } catch (error) {
+      console.error("Erro ao comprar:", error);
+      toast.error("❌ Erro ao processar compra. Tente novamente.");
     }
-
-    toast.success("Compra efetuada com sucesso!");
-    setCart([]);
   };
 
   if (isLoading)
@@ -121,6 +136,8 @@ export default function ProdutosPage() {
   if (sort === "price-asc") sortedData.sort((a, b) => a.price - b.price);
   if (sort === "price-desc") sortedData.sort((a, b) => b.price - a.price);
 
+  const total = cart.reduce((acc, item) => acc + item.product.price * item.qty, 0);
+
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">Produtos</h1>
@@ -148,22 +165,12 @@ export default function ProdutosPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {sortedData?.map((p) => (
-          <div
-            key={p.id}
-            className="cursor-pointer"
-            onClick={() => {
-              setSelectedProduct(p);
-              setOpen(true);
-            }}
-          >
-            <ProdutoDetalhesCard product={p} />
+          <div key={p.id}>
+            <ProductCard product={p} />
 
             <button
-              className="mt-2 w-full bg-blue-500 text-white py-2 rounded"
-              onClick={(e) => {
-                e.stopPropagation();
-                addToCart(p);
-              }}
+              className="mt-2 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded transition-colors"
+              onClick={() => addToCart(p)}
             >
               Adicionar ao carrinho
             </button>
@@ -172,12 +179,6 @@ export default function ProdutosPage() {
       </div>
 
       <CartSection cart={cart} removeFromCart={removeFromCart} buy={buy} />
-
-      <ProductModal
-        product={selectedProduct}
-        open={open}
-        onClose={() => setOpen(false)}
-      />
     </div>
   );
 }
