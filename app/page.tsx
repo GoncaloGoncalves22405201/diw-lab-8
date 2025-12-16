@@ -1,17 +1,5 @@
 import MagiaDoJSX from "@/components/MagiaDoJSX/MagiaDoJSX";
 
-// POSSÍVEIS MODIFICAÇÕES:
-// 1. Adicionar hero section com CTA
-// 2. Adicionar features showcase
-// 3. Adicionar testimonials
-// 4. Adicionar latest projects/posts
-// 5. Adicionar newsletter signup
-// 6. Adicionar statistics/counters
-// 7. Adicionar animated elements
-// 8. Adicionar video background
-// 9. Adicionar quick links/shortcuts
-// 10. Adicionar featured content carousel
-
 export default function IntroPage() {
   return (
     <div>

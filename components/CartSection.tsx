@@ -312,7 +312,7 @@ export default function CartSection({ cart, removeFromCart, buy }: Props) {
                 Cupões válidos: DESCONTO10, DESCONTO20, WELCOME
               </span>
               
-              {/* MODIFICAÇÃO POSSÍVEL: Sugestões de cupões
+              {/* MODIFICAÇÃO POSSÍVEL:Sugestões de cupões
               <button
                 onClick={() => setShowCouponSuggestions(!showCouponSuggestions)}
                 className="text-xs text-blue-500 hover:underline mt-1"

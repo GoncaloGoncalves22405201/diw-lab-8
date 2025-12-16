@@ -45,6 +45,7 @@ export default function RootLayout({
             <Link href="/relogio">Relógio</Link>
             <Link href="/produtos">Produtos</Link>
             <Link href="/categorias">Categorias</Link>
+            <Link href="/paises">Países</Link>
           </nav>
         </header>
 

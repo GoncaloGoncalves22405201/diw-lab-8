@@ -1,0 +1,24 @@
+"use client";
+
+import Link from "next/link";
+
+export default function UltimosProdutos() {
+  const produtos = JSON.parse(localStorage.getItem("ultimosVistos") || "[]");
+  return(
+    <div>
+      <p>Últimos  </p>
+      <div style={{ display: "flex" }}>
+        {produtos.slice(0, 5).map((p: ) => (
+          <div key={p.id}>
+            <img src={p.image} width={60} />
+            <p>  {p.price}€  </p>
+            <Link href=  {`/produtos/${p.id}`}>Mais info</Link>
+          </div>
+
+
+        ))}
+      </div>
+    </div>
+  );
+  
+}
